@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react"
 import withStyles from "react-jss"
 import { geoPath, geoAlbersUsa, curveCatmullRomClosed } from "d3"
-import { geoCurvePath } from "../utils/softBorders"
 import { feature } from "topojson-client"
 import { isMobile } from "react-device-detect"
 import countiesAlbersData from "../data/counties-albers-10m.json"
 import { locations } from "../data"
-import Tooltip from "./Tooltip"
-import FilteredData from "./FilteredData"
+import { Tooltip, FilteredData, Dropdown } from "."
+import { geoCurvePath } from "../utils/softBorders"
 import { EssayIcon, EventIcon, SocialIcon } from "../assets/icons"
 
 const styles = {
@@ -87,10 +86,12 @@ const Map = ({ classes }) => {
   const [tooltipData, setTooltipData] = useState({})
 
   const activateTooltip = (e, type, data) => {
-    setTooltip(true)
-    setTooltipPosition([e.clientX, e.clientY])
-    setType(type)
-    setTooltipData(data)
+    if (!isMobile) {
+      setTooltip(true)
+      setTooltipPosition([e.clientX, e.clientY])
+      setType(type)
+      setTooltipData(data)
+    }
   }
 
   const [activeState, setActiveState] = useState("")
@@ -102,13 +103,21 @@ const Map = ({ classes }) => {
 
       if (activeState === state) {
         setActiveState("")
-        setActiveStateData([])
       } else {
         setActiveState(state)
-        setActiveStateData(locations.filter((d) => d.state === state))
       }
     }
   }
+
+  useEffect(() => {
+    if (isMobile) {
+      if (activeState === "") {
+        setActiveStateData([])
+      } else {
+        setActiveStateData(locations.filter((d) => d.state === activeState))
+      }
+    }
+  }, [activeState])
 
   return (
     <>
@@ -173,7 +182,7 @@ const Map = ({ classes }) => {
                 <path
                   key={item.id}
                   fill={
-                    item.properties.name === activeState ? "#A5A5A5" : "white"
+                    item.properties.name === activeState ? "#EEEEEE" : "white"
                   }
                   stroke="#A5A5A5"
                   strokeWidth={stateBorderWidth}
@@ -233,7 +242,12 @@ const Map = ({ classes }) => {
           setTooltip={setTooltip}
         />
       )}
-      {isMobile && activeState ? <FilteredData data={activeStateData} /> : null}
+      {isMobile && (
+        <Dropdown activeState={activeState} setActiveState={setActiveState} />
+      )}
+      {isMobile && activeState ? (
+        <FilteredData activeState={activeState} data={activeStateData} />
+      ) : null}
     </>
   )
 }

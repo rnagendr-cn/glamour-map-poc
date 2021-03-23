@@ -1,6 +1,61 @@
 import SocialPost from "../assets/social-post.png"
 import SocialPost2 from "../assets/social-post-2.png"
 
+export const options = [
+  "Clear selection",
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "District of Columbia",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming",
+]
+
 export const locations = [
   {
     type: "essays",
@@ -24,7 +79,9 @@ export const locations = [
     long: -87.6298,
     data: {
       title: "Event",
-      description: "This is a sample event description.",
+      description:
+        "Virtual meet-up with neurologist and migraine specalist Dr. Migraine hosted by San Antonio Hospital Network.",
+      rsvp: "thisIsTheMailidYouRSVPto@gmail.com",
     },
   },
   {
@@ -85,7 +142,9 @@ export const locations = [
     long: -115.1398,
     data: {
       title: "Event",
-      description: "This is a sample event description.",
+      description:
+        "Virtual meet-up with neurologist and migraine specalist Dr. Migraine hosted by San Antonio Hospital Network.",
+      rsvp: "thisIsTheMailidYouRSVPto@gmail.com",
     },
   },
 ]

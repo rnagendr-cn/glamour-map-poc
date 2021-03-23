@@ -1,6 +1,7 @@
 import React from "react"
 import Map from "./components/Map"
 import Legend from "./components/Legend"
+// import InstagramEmbed from "react-instagram-embed"
 import "./App.css"
 
 function App() {
@@ -11,6 +12,19 @@ function App() {
         <Legend />
       </div>
       <Map />
+      {/* <InstagramEmbed
+        url="https://instagr.am/p/Zw9o4/"
+        // clientAccessToken='123|456'
+        maxWidth={320}
+        hideCaption={false}
+        containerTagName="div"
+        protocol=""
+        injectScript
+        onLoading={() => {}}
+        onSuccess={() => {}}
+        onAfterRender={() => {}}
+        onFailure={() => {}}
+      /> */}
     </div>
   )
 }

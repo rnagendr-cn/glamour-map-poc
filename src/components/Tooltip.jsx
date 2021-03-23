@@ -12,6 +12,7 @@ const styles = {
     padding: "1.7rem 1.2rem",
     maxWidth: "20vw",
     minWidth: "280px",
+    zIndex: "100",
   },
   title: {
     margin: "0 0 1rem 0",
@@ -65,10 +66,13 @@ const EssaysView = ({ classes, data: { title, quote, location, link } }) => (
   </>
 )
 
-const EventView = ({ classes, data: { title, description } }) => (
+const EventView = ({ classes, data: { title, description, rsvp } }) => (
   <>
     <p className={classes.title}>{title}</p>
     <p className={classes.description}>{description}</p>
+    <a className={classes.expand} href={`mailto:${rsvp}`}>
+      RSVP <span className={classes.expandSymbol}>></span>
+    </a>
   </>
 )
 
